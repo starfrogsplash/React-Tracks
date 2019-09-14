@@ -1,0 +1,23 @@
+# node modules
+/react-tracks-client/node_modules
+
+
+/react-tracks-client/.pnp
+/react-tracks-client.pnp.js
+
+# testing
+/react-tracks-client/coverage
+
+# production
+/react-tracks-client/build
+
+# misc
+/react-tracks-client.DS_Store
+/react-tracks-client.env.local
+/react-tracks-client.env.development.local
+/react-tracks-client.env.test.local
+/react-tracks-client.env.production.local
+
+/react-tracks-clientnpm-debug.log*
+/react-tracks-clientyarn-debug.log*
+/react-tracks-clientyarn-error.log*

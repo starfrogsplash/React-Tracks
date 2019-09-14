@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "/Users/Ali/.local/share/virtualenvs/react-tracks-DY_h3Qup/bin/python",
+    "python.linting.pylintEnabled": false,
+    "python.linting.pep8Enabled": true,
+    "python.linting.enabled": true,
+    "python.linting.mypyEnabled": false
+}
