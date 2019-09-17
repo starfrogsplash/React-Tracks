@@ -1,7 +1,14 @@
 import React from "react";
-import withRoot from "./withRoot";
 import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import withRoot from "./withRoot";
+import App from "./pages/App";
+import Profile from "./pages/Profile";
+import Header from "./components/Shared/Header";
+import Loading from "./components/Shared/Loading";
+import Error from "./components/Shared/Error";
 
 export const ME_QUERY = gql`
   {
@@ -30,12 +37,24 @@ const GET_TRACKS = gql`
 `;
 
 const Root = () => (
-
   <Query query={ME_QUERY}>
     {({ data, loading, error }) => {
-      if (loading) return <div> loading.. </div>;
-      if (error) return <div> error: {error} </div>;
-      return <div> data: {JSON.stringify(data, null, 2)} </div>;
+      if (loading) return <Loading/>;
+      if (error) return <Error/>;
+
+      const currentUser = data.me
+
+      return (
+      <Router>
+        <>
+        <Header currentUser={currentUser}/>
+        <Switch>
+          <Route exact path="/" component={App}/>
+          <Route path="/profile/:id" component={Profile}/>
+        </Switch> 
+        </> 
+      </Router>
+        );
     }}
   </Query>
 );
