@@ -10,6 +10,8 @@ import Header from "./components/Shared/Header";
 import Loading from "./components/Shared/Loading";
 import Error from "./components/Shared/Error";
 
+export const UserContext = React.createContext();
+
 export const ME_QUERY = gql`
   {
     me {
@@ -39,22 +41,22 @@ const GET_TRACKS = gql`
 const Root = () => (
   <Query query={ME_QUERY}>
     {({ data, loading, error }) => {
-      if (loading) return <Loading/>;
-      if (error) return <Error/>;
+      if (loading) return <Loading />;
+      if (error) return <Error />;
 
-      const currentUser = data.me
+      const currentUser = data.me;
 
       return (
-      <Router>
-        <>
-        <Header currentUser={currentUser}/>
-        <Switch>
-          <Route exact path="/" component={App}/>
-          <Route path="/profile/:id" component={Profile}/>
-        </Switch> 
-        </> 
-      </Router>
-        );
+        <Router>
+          <UserContext.Provider value={currentUser}>
+            <Header currentUser={currentUser} />
+            <Switch>
+              <Route exact path="/" component={App} />
+              <Route path="/profile/:id" component={Profile} />
+            </Switch>
+          </UserContext.Provider>
+        </Router>
+      );
     }}
   </Query>
 );

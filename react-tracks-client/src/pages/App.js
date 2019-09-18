@@ -22,7 +22,7 @@ const App = ({ classes }) => {
           if (loading) return <Loading />;
           if (error) return <Error error={error} />;
           const tracks = searchResults.length > 0 ? searchResults : data.tracks;
-
+          
           return <TrackList tracks={tracks} />;
         }}
       </Query>
