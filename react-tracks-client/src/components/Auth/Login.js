@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Mutation } from "react-apollo";
 import { gql } from "apollo-boost";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -24,9 +24,9 @@ const Login = ({ classes, setNewUser }) => {
     client.writeData({ data: { isLoggedIn: true } });
   };
 
-
-  return <div>
-         <Paper className={classes.paper}>
+  return (
+    <div className={classes.root}>
+      <Paper className={classes.paper}>
         <Avatar className={classes.avatar}>
           <Lock />
         </Avatar>
@@ -82,8 +82,7 @@ const Login = ({ classes, setNewUser }) => {
         </Mutation>
       </Paper>
     </div>
-    
-    ;
+  );
 };
 
 const LOGIN_MUTATION = gql`
@@ -93,7 +92,6 @@ const LOGIN_MUTATION = gql`
     }
   }
 `;
-
 
 const styles = theme => ({
   root: {
